@@ -2,26 +2,39 @@ import React, { useState } from "react";
 import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
 import "./navbar.css";
 import logo from "../../assets/logo.svg";
+import { Link } from "react-scroll";
+
 //BEM => Block Element Modifier, a css naming convention for classes
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
+  const navs = ["home", "wgpt3", "possibility", "features", "blog"];
+  const handleSetActive = (to) => {
+    setTimeout(() => {
+      const element = document.getElementById(to);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 100);
+  };
+
   const Menu = () => (
     <>
-      <p>
-        <a href="#Home">Home</a>
-      </p>
-      <p>
-        <a href="#wgpt3">What is GPT?</a>
-      </p>
-      <p>
-        <a href="#possibility">Open AI</a>
-      </p>
-      <p>
-        <a href="#features">Case Studies</a>
-      </p>
-      <p>
-        <a href="#blog">Library</a>
-      </p>
+      <ul className="flex">
+        {navs.map((nav, index) => (
+          <li key={index}>
+            <Link
+              to={nav}
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={500}
+              delay={0}
+            >
+              <p> {nav}</p>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </>
   );
   return (

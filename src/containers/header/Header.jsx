@@ -5,7 +5,7 @@ import ai from "../../assets/ai.png";
 
 const Header = () => {
   return (
-    <div className="gpt3__header section__padding" id="Home">
+    <div className="gpt3__header section__padding" id="home">
       <div className="gpt3__header-content">
         <h1 className="gradient__text">
           The Future is Now and You Just Need To Realize It. Step into Future
